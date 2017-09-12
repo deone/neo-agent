@@ -4,19 +4,20 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 
-class DateCreated(models.Model):
+class ActiveAndDateCreated(models.Model):
     class Meta:
         abstract = True
 
     date_created = models.DateTimeField(default=timezone.now, editable=False)
+    is_active = models.BooleanField(default=True)
 
-class Entity(DateCreated):
+class Entity(ActiveAndDateCreated):
     class Meta:
         abstract = True
 
     name = models.CharField(max_length=25, unique=True)
 
-class NeoAgent(DateCreated):
+class NeoAgent(ActiveAndDateCreated):
     # A supervisor is an agent assigned to a zone
     # Assign an agent to an area, supervisors to a zone
     # Ensure an agent cannot have both area and zone set.
