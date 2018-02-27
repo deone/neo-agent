@@ -15,7 +15,7 @@ class Entity(ActiveAndDateCreated):
     class Meta:
         abstract = True
 
-    name = models.CharField(max_length=25, unique=True)
+    name = models.CharField(max_length=50, unique=True)
 
 class NeoAgent(ActiveAndDateCreated):
     # A supervisor is an agent assigned to a zone
